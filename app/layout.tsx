@@ -1,20 +1,12 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 export const metadata: Metadata = {
   title: "SJ Mart Retails",
   description: "Fresh Food Store",
-  manifest: "/manifest.json",
-  themeColor: "#ea580c",
-  viewport: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=yes",
-  appleWebApp: {
-    capable: true,
-    statusBarStyle: "default",
-    title: "SJ Mart",
-  },
-  formatDetection: {
-    telephone: false,
-  },
+  viewport: "width=device-width, initial-scale=1",
 };
 
 export default function RootLayout({
@@ -24,12 +16,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <link rel="apple-touch-icon" href="/icon-152x152.png" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-      </head>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased flex flex-col min-h-screen">
+        <Header />
+        <main className="flex-grow">{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }
